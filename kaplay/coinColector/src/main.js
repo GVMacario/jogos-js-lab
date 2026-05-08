@@ -16,6 +16,7 @@ loadRoot("./");
 loadSprite("bean", "sprites/bean.png");
 loadSprite("coin", "sprites/coin.png");
 loadSprite("play", "sprites/play.png");
+loadSprite("ghosty", "sprites/ghosty.png");
 
 scene("start_screen", ()=>{
     add([
@@ -41,7 +42,12 @@ scene("game_screen", ()=>{
     for (let i = 0; i < 5; i++){
         add(createCoin());
     };
-
+    const ghosty = add([
+        sprite("ghosty"),
+        pos(rand(0, width()-20), rand(0, height()-20)),
+        area(),
+        "enemy"
+    ])
     onKeyDown("d", ()=>{
         player.move(300,0);
     });
@@ -64,10 +70,21 @@ scene("game_screen", ()=>{
         destroy(coin)
     });
 
-    onUpdate(()=>{if(coinsColected == 5){
-        coinsColected = 0
+    onCollide("player","enemy",()=>{
+        debug.log(`Morreu`);
+        destroy(player)
         go("finish_screen")
-    }})
+    });
+
+    onUpdate(()=>{
+        const dir = player.pos.sub(ghosty.pos);
+        let speed = dir.len();
+        speed = Math.max(speed, 200);
+        ghosty.move(dir.unit().scale(speed));
+        if(coinsColected == 5){
+            coinsColected = 0
+            go("finish_screen")
+        }});
 });
 
 scene("finish_screen", ()=>{
