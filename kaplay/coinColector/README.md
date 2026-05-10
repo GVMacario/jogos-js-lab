@@ -1,6 +1,6 @@
 # 🎮 CoinCollector
 
-Um jogo simples de coleta de moedas desenvolvido com JavaScript utilizando a biblioteca Kaplay.
+Um jogo simples de coleta de moedas.
 
 O projeto foi criado com o objetivo de praticar e entender melhor os conceitos básicos de desenvolvimento de jogos e as funcionalidades da engine, como:
 
@@ -26,7 +26,7 @@ O objetivo é coletar todas as moedas espalhadas pela tela.
 
 Após coletar todas as moedas, o jogo vai para a tela final, onde é possível reiniciar a partida.
 
-## 📚 Objetivo do projeto
+## 📌 Objetivo do projeto
 
 Este projeto foi desenvolvido como um laboratório de aprendizado para explorar conceitos básicos de game development e entender melhor a estrutura e funcionamento do Kaplay.
 
